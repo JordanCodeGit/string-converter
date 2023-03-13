@@ -1,40 +1,53 @@
-#This is jordan's code
+from tkinter import *
 
-while True:
-    # Take input string from user
-    input_str = input("Enter a string to convert (or 'exit' to quit): ")
-    
-    # Exit program if user enters 'exit'
-    if input_str == 'exit':
-        break
-    
-    # Display conversion options to the user
-    print("============Select a conversion option:=============")
-    print("1. Binary")
-    print("2. Hexadecimal")
-    print("3. Decimal")
-    print("4. Octal")
-    print("5. ASCII")
-    print("")
-    
-    # Take input option from the user
-    option = input("Enter option number: ")
-    
-    # Convert input string based on user's selected option
-    if option == '1':
+def convert():
+    input_str = input_box.get()
+    option = option_var.get()
+    if option == 'binary':
         binary = ''.join(format(ord(c), '08b') for c in input_str)
-        print(f"Binary: {binary}")
-    elif option == '2':
+        output_box.delete(0, END)
+        output_box.insert(0, binary)
+    elif option == 'hexadecimal':
         hexadecimal = ''.join(hex(ord(c))[2:] for c in input_str)
-        print(f"Hexadecimal: {hexadecimal}")
-    elif option == '3':
+        output_box.delete(0, END)
+        output_box.insert(0, hexadecimal)
+    elif option == 'decimal':
         decimal = ''.join(str(ord(c)) for c in input_str)
-        print(f"Decimal: {decimal}")
-    elif option == '4':
+        output_box.delete(0, END)
+        output_box.insert(0, decimal)
+    elif option == 'octal':
         octal = ''.join(oct(ord(c))[2:] for c in input_str)
-        print(f"Octal: {octal}")
-    elif option == '5':
+        output_box.delete(0, END)
+        output_box.insert(0, octal)
+    elif option == 'ascii':
         ascii_code = ''.join(str(ord(c)) + ' ' for c in input_str)
-        print(f"ASCII Code: {ascii_code}")
+        output_box.delete(0, END)
+        output_box.insert(0, ascii_code)
     else:
-        print("Invalid option selected. Please select again.")
+        output_box.delete(0, END)
+        output_box.insert(0, "Invalid option selected.")
+
+root = Tk()
+
+input_label = Label(root, text="Enter a string to convert:")
+input_label.pack()
+
+input_box = Entry(root)
+input_box.pack()
+
+option_var = StringVar(root)
+option_var.set("Select an option")
+
+option_menu = OptionMenu(root, option_var, "binary", "hexadecimal", "decimal", "octal", "ascii")
+option_menu.pack()
+
+convert_button = Button(root, text="Convert", command=convert)
+convert_button.pack()
+
+output_label = Label(root, text="Converted string:")
+output_label.pack()
+
+output_box = Entry(root, width=200)
+output_box.pack()
+
+root.mainloop()
