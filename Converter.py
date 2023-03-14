@@ -1,33 +1,52 @@
+# Made by Jordan Angkawijaya
+# XII RPL 4
+# Ujian Sekolah DP1 & DP3
+
+# import tkinter module
 from tkinter import *
 from tkinter import ttk
 
+# define convert function
 def convert():
     input_str = input_box.get()
     option = option_var.get()
+
+    # define the binary conversion function
     if option == 'binary':
         binary = ''.join(format(ord(c), '08b') for c in input_str)
         output_box.delete(0, END)
         output_box.insert(0, binary)
+
+    # define the hexadecimal conversion function
     elif option == 'hexadecimal':
         hexadecimal = ''.join(hex(ord(c))[2:] for c in input_str)
         output_box.delete(0, END)
         output_box.insert(0, hexadecimal)
+
+    # define the decimal conversion function
     elif option == 'decimal':
         decimal = ''.join(str(ord(c)) for c in input_str)
         output_box.delete(0, END)
         output_box.insert(0, decimal)
+
+    # define the octal conversion function
     elif option == 'octal':
         octal = ''.join(oct(ord(c))[2:] for c in input_str)
         output_box.delete(0, END)
         output_box.insert(0, octal)
+
+    # define the ascii conversion function
     elif option == 'ascii':
         ascii_code = ''.join(str(ord(c)) + ' ' for c in input_str)
         output_box.delete(0, END)
         output_box.insert(0, ascii_code)
+
+    # define the invalid option function
     else:
         output_box.delete(0, END)
         output_box.insert(0, "Invalid option selected.")
 
+# create the main window
 root = Tk()
 
 # set window title
@@ -59,7 +78,7 @@ option_label.pack(pady=10)
 # create option menu
 option_var = StringVar(root)
 option_var.set("Select an option")
-option_menu = ttk.OptionMenu(root, option_var, "Choose a language", "binary", "hexadecimal", "decimal", "octal", "ascii")
+option_menu = ttk.OptionMenu(root, option_var, "Choose a number system", "binary", "hexadecimal", "decimal", "octal", "ascii")
 option_menu.config(width=20)
 option_menu.pack()
 
