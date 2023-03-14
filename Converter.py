@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 
 def convert():
     input_str = input_box.get()
@@ -29,25 +30,51 @@ def convert():
 
 root = Tk()
 
-input_label = Label(root, text="Enter a string to convert:")
-input_label.pack()
+# set window title
+root.title("String Converter by Jordan Ang.")
 
-input_box = Entry(root)
+# set window size and position
+root.geometry("500x350+500+200")
+
+# set window style
+style = ttk.Style()
+style.theme_use("clam")
+
+# create input label
+input_label = ttk.Label(root, text="Ujian Sekolah DP1 & DP3")
+input_label.pack(pady=10)
+
+# create input label
+input_label = ttk.Label(root, text="Enter a string to convert:")
+input_label.pack(pady=10)
+
+# create input box
+input_box = ttk.Entry(root, width=50, font=("Helvetica", 14))
 input_box.pack()
 
+# create option label
+option_label = ttk.Label(root, text="Select a conversion option:")
+option_label.pack(pady=10)
+
+# create option menu
 option_var = StringVar(root)
 option_var.set("Select an option")
-
-option_menu = OptionMenu(root, option_var, "binary", "hexadecimal", "decimal", "octal", "ascii")
+option_menu = ttk.OptionMenu(root, option_var, "Choose a language", "binary", "hexadecimal", "decimal", "octal", "ascii")
+option_menu.config(width=20)
 option_menu.pack()
 
-convert_button = Button(root, text="Convert", command=convert)
-convert_button.pack()
+# create convert button
+convert_button = ttk.Button(root, text="Convert", command=convert)
+convert_button.config(width=20)
+convert_button.pack(pady=20)
 
-output_label = Label(root, text="Converted string:")
-output_label.pack()
+# create output label
+output_label = ttk.Label(root, text="Converted string:")
+output_label.pack(pady=10)
 
-output_box = Entry(root, width=200)
+# create output box
+output_box = ttk.Entry(root, width=50, font=("Helvetica", 14))
 output_box.pack()
 
+# run the main loop
 root.mainloop()
