@@ -79,7 +79,7 @@ option_label.pack(pady=10)
 option_var = StringVar(root)
 option_var.set("Select an option")
 option_menu = ttk.OptionMenu(root, option_var, "Choose a number system", "binary", "hexadecimal", "decimal", "octal", "ascii")
-option_menu.config(width=20)
+option_menu.config(width=30)
 option_menu.pack()
 
 # create convert button
