@@ -34,7 +34,7 @@ root = Tk()
 root.title("String Converter by Jordan Ang.")
 
 # set window size and position
-root.geometry("500x350+500+200")
+root.geometry("1000x350+500+200")
 
 # set window style
 style = ttk.Style()
@@ -73,7 +73,7 @@ output_label = ttk.Label(root, text="Converted string:")
 output_label.pack(pady=10)
 
 # create output box
-output_box = ttk.Entry(root, width=50, font=("Helvetica", 14))
+output_box = ttk.Entry(root, width=75, font=("Helvetica", 14))
 output_box.pack()
 
 # run the main loop
