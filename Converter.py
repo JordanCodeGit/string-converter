@@ -193,8 +193,8 @@ option_menu.place(relx=0.55, rely=0.35, anchor='center', relwidth=0.4, relheight
 convert_button = tk.Button(stringbase_tab, text="Convert", font=("Roboto", 15), command=convert, cursor="hand2", bg="black", fg="white", activebackground="gray", activeforeground="white")
 convert_button.place(relx=0.55, rely=0.5, anchor='center', relwidth=0.4, relheight=0.1)
 # create output label
-output_label = ttk.Label(stringbase_tab, text="Converted string:", font=("Roboto", "13"))
-output_label.place(relx=0.55, rely=0.7, anchor='center', relwidth=0.4, relheight=0.1)
+output_label = ttk.Label(stringbase_tab, text="Converted string", font=("Roboto", "15"))
+output_label.place(relx=0.6, rely=0.7, anchor='center', relwidth=0.4, relheight=0.1)
 # create output box
 output_box = ttk.Entry(stringbase_tab, width=75, font=main_font)
 output_box.place(relx=0.5, rely=0.8, anchor='center', relwidth=1, relheight=0.1)
