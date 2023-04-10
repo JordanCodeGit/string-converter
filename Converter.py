@@ -121,7 +121,7 @@ ascii_button = tk.Button(ascii_tab, text="Convert", font=("Roboto", 17), command
 ascii_button.place(relx=0.5, rely=0.5, anchor='center', relwidth=0.8, relheight=0.1)
 # Create the label for the result
 ascii_result = tk.Label(ascii_tab, text="", font=("Roboto", 17))
-ascii_result.place(relx=0.5, rely=0.7, anchor='center', relwidth=0.8, relheight=0.1)
+ascii_result.place(relx=0.5, rely=0.7, anchor='center', relwidth=1, relheight=0.1)
 
 
 ### ----Create the base conversion tab---- ###
