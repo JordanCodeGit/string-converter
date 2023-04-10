@@ -8,7 +8,7 @@ from tkinter import ttk
 from tkinter import *
 
 # Define the main font
-main_font = ("Helvetica", 12)
+main_font = ("Roboto", 12)
 
 # Define the ASCII conversion function
 def ascii_conversion(string):
@@ -48,7 +48,7 @@ def base_conversion(num, from_base, to_base):
 def handle_string_to_ascii():
     string = input_string.get()
     ascii_values = ascii_conversion(string)
-    ascii_result.config(text="The ASCII values for the string are:\n" + ", ".join(str(value) for value in ascii_values), font=("Helvetica", 18))
+    ascii_result.config(text="The ASCII values for the string are:\n" + ", ".join(str(value) for value in ascii_values), font=("Roboto", 18))
 
 # Define the base conversion event handler
 def handle_base_conversion():
@@ -84,7 +84,7 @@ def convert():
     # define the octal conversion function
     elif option == 'octal':
         octal = ''.join(oct(ord(c))[2:] for c in input_str)
-        output_box.delete(0, END)
+
         output_box.insert(0, octal)
 
     # define the invalid option function
@@ -99,103 +99,105 @@ root.geometry("900x500")
 
 # Define the notebook style
 style = ttk.Style()
-style.theme_use("default")
-style.configure("TNotebook", background="white")
-style.configure("TNotebook.Tab", background="gray", foreground="white", font=main_font)
+style.theme_use("winnative")
+style.configure("TNotebook", background="#F1F0F0")
+style.configure("TNotebook.Tab", background="gray", foreground="#F1F0F0", font="Roboto 15")
 style.map("TNotebook.Tab", background=[("selected", "black")])
 
 # Create the notebook
 notebook = ttk.Notebook(root)
 
-### ----Create the ASCII conversion tab---- ###
+# Create the ASCII conversion tab
 ascii_tab = ttk.Frame(notebook)
 notebook.add(ascii_tab, text="ASCII Conversion")
 # Create the label for the string to convert
-input_label = tk.Label(ascii_tab, text="Enter the string to convert to ASCII:", font=main_font)
-input_label.pack(pady=10)
+input_label = tk.Label(ascii_tab, text="Enter a string to convert to ASCII", font=("Roboto", 25))
+input_label.place(relx=0.5, rely=0.2, anchor='center', relwidth=0.8, relheight=0.1)
 # Create the entry for the string to convert
-input_string = tk.Entry(ascii_tab, font=main_font)
-input_string.pack(padx=10)
+input_string = tk.Entry(ascii_tab, font=("Roboto", 17))
+input_string.place(relx=0.5, rely=0.4, anchor='center', relwidth=0.8, relheight=0.1)
 # Create the button to convert the string
-ascii_button = tk.Button(ascii_tab, text="Convert", font=main_font, command=handle_string_to_ascii)
-ascii_button.pack(pady=10)
+ascii_button = tk.Button(ascii_tab, text="Convert", font=("Roboto", 17), command=handle_string_to_ascii, cursor="hand2", bg="black", fg="white", activebackground="gray", activeforeground="white")
+ascii_button.place(relx=0.5, rely=0.5, anchor='center', relwidth=0.8, relheight=0.1)
 # Create the label for the result
-ascii_result = tk.Label(ascii_tab, text="", font=main_font)
-ascii_result.pack(pady=10)
+ascii_result = tk.Label(ascii_tab, text="", font=("Roboto", 17))
+ascii_result.place(relx=0.5, rely=0.7, anchor='center', relwidth=0.8, relheight=0.1)
 
 
 ### ----Create the base conversion tab---- ###
 base_tab = ttk.Frame(notebook)
 notebook.add(base_tab, text="Base Conversion")
 # Create the label for the number to convert
-num_label = tk.Label(base_tab, text="Enter the number to convert:", font=main_font)
-num_label.pack(pady=10)
+num_label = tk.Label(base_tab, text="Enter a number to convert", font=("Roboto", "20"))
+num_label.place(relx=0.5, rely=0.1, anchor='center', relwidth=0.8, relheight=0.1)
 # Create the entry for the number to convert
-input_num = tk.Entry(base_tab, font=main_font)
-input_num.pack(padx=10, pady=10)
+input_num = tk.Entry(base_tab, font=("Roboto", 17))
+input_num.place(relx=0.5, rely=0.2, anchor='center', relwidth=0.8, relheight=0.1)
+
 # Create the label for binary information
-from_base_label = ttk.Label(base_tab, text="2: Binary", font=main_font)
-from_base_label.pack(pady=1)
+from_base_label_2 = ttk.Label(base_tab, text="2: Binary", font=main_font)
+from_base_label_2.place(relx=0.34, rely=0.3, anchor='center', relwidth=0.1, relheight=0.1)
 # Create the label for octal information
-from_base_label = ttk.Label(base_tab, text="8: Octal", font=main_font)
-from_base_label.pack(pady=1)
+from_base_label_8 = ttk.Label(base_tab, text="8: Octal", font=main_font)
+from_base_label_8.place(relx=0.44, rely=0.3, anchor='center', relwidth=0.1, relheight=0.1)
 # Create the label for decimal information
-from_base_label = ttk.Label(base_tab, text="10: Decimal", font=main_font)
-from_base_label.pack(pady=1)
+from_base_label_10 = ttk.Label(base_tab, text="10: Decimal", font=main_font)
+from_base_label_10.place(relx=0.54, rely=0.3, anchor='center', relwidth=0.1, relheight=0.1)
 # Create the label for hexadecimal information
-from_base_label = ttk.Label(base_tab, text="16: Hexadecimal", font=main_font)
-from_base_label.pack(pady=1)
+from_base_label_16 = ttk.Label(base_tab, text="16: Hexadecimal", font=main_font)
+from_base_label_16.place(relx=0.71, rely=0.3, anchor='center', relwidth=0.2, relheight=0.1)
+
 # Create the label for the base to convert from
 from_base_label = tk.Label(base_tab, text="Enter the base of the number:", font=main_font)
-from_base_label.pack(pady=10)
+from_base_label.place(relx=0.21, rely=0.4, anchor='center', relwidth=0.3, relheight=0.1)
 # Create the dropdown for the base to convert from
 from_base_var = tk.StringVar(value="Pick...")
 from_base_dropdown = tk.OptionMenu(base_tab, from_base_var, "2", "8", "10", "16")
-from_base_dropdown.pack(padx=10)
+from_base_dropdown.place(relx=0.24, rely=0.5, anchor='center', relwidth=0.3, relheight=0.1)
 # Create the label for the base to convert to
 to_base_label = tk.Label(base_tab, text="Enter the base to convert to:", font=main_font)
-to_base_label.pack(pady=10)
+to_base_label.place(relx=0.71, rely=0.4, anchor='center', relwidth=0.3, relheight=0.1)
 # Create the dropdown for the base to convert to
 to_base_var = tk.StringVar(value="Pick...")
 to_base_dropdown = tk.OptionMenu(base_tab, to_base_var, "2", "8", "10", "16")
-to_base_dropdown.pack(padx=10)
+to_base_dropdown.place(relx=0.75, rely=0.5, anchor='center', relwidth=0.3, relheight=0.1)
+
 # Create the button to convert the number
-base_button = tk.Button(base_tab, text="Convert", command=handle_base_conversion, font=main_font)
-base_button.pack(pady=10)
+base_button = tk.Button(base_tab, text="Convert",  font=("Roboto", 17), command=handle_base_conversion, cursor="hand2", bg="black", fg="white", activebackground="gray", activeforeground="white")
+base_button.place(relx=0.5, rely=0.7, anchor='center', relwidth=0.8, relheight=0.1)
 # Create the label for the result
 base_result = tk.Label(base_tab, text="", font=("Helvetica", 20))
-base_result.pack(pady=10)
+base_result.place(relx=0.5, rely=0.9, anchor='center', relwidth=1, relheight=0.1)
 
 
 ### ----Create the string to base conversion tab---- ###
 stringbase_tab = ttk.Frame(notebook)
 notebook.add(stringbase_tab, text="String to Base Conversion")
 # create input label
-input_label = ttk.Label(stringbase_tab, text="Enter a string to convert:", font=main_font)
-input_label.pack(pady=10)
+input_label = ttk.Label(stringbase_tab, text="Enter a string to convert", font=("Roboto", "20"))
+input_label.place(relx=0.75, rely=0.1, anchor='center', relwidth=0.8, relheight=0.1)
 # create input box
-input_box = ttk.Entry(stringbase_tab, width=50, font=main_font)
-input_box.pack()
+input_box = ttk.Entry(stringbase_tab, width=50, font=("Roboto", "16"))
+input_box.place(relx=0.5, rely=0.2, anchor='center', relwidth=0.8, relheight=0.1)
+
 # create option label
-option_label = ttk.Label(stringbase_tab, text="Select a conversion option:", font=main_font)
-option_label.pack(pady=10)
+option_label = ttk.Label(stringbase_tab, text="Select a conversion option:", font=("Roboto", "13"))
+option_label.place(relx=0.5, rely=0.35, anchor='center', relwidth=0.8, relheight=0.1)
 # create option menu
 option_var = StringVar(stringbase_tab)
 option_var.set("Select an option")
 option_menu = ttk.OptionMenu(stringbase_tab, option_var, "Choose a number system", "binary", "hexadecimal", "decimal", "octal")
-option_menu.config(width=30)
-option_menu.pack()
+option_menu.place(relx=0.55, rely=0.35, anchor='center', relwidth=0.4, relheight=0.1)
+
 # create convert button
-convert_button = ttk.Button(stringbase_tab, text="Convert", command=convert)
-convert_button.config(width=20)
-convert_button.pack(pady=20)
+convert_button = tk.Button(stringbase_tab, text="Convert", font=("Roboto", 15), command=convert, cursor="hand2", bg="black", fg="white", activebackground="gray", activeforeground="white")
+convert_button.place(relx=0.55, rely=0.5, anchor='center', relwidth=0.4, relheight=0.1)
 # create output label
-output_label = ttk.Label(stringbase_tab, text="Converted string:", font=main_font)
-output_label.pack(pady=10)
+output_label = ttk.Label(stringbase_tab, text="Converted string:", font=("Roboto", "13"))
+output_label.place(relx=0.55, rely=0.7, anchor='center', relwidth=0.4, relheight=0.1)
 # create output box
 output_box = ttk.Entry(stringbase_tab, width=75, font=main_font)
-output_box.pack()
-
+output_box.place(relx=0.5, rely=0.8, anchor='center', relwidth=1, relheight=0.1)
 
 # Create the notebook pack
 notebook.pack(expand=True, fill="both")
