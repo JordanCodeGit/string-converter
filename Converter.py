@@ -197,7 +197,7 @@ output_label = ttk.Label(stringbase_tab, text="Converted string", font=("Roboto"
 output_label.place(relx=0.6, rely=0.7, anchor='center', relwidth=0.4, relheight=0.1)
 # create output box
 output_box = ttk.Entry(stringbase_tab, width=75, font=main_font)
-output_box.place(relx=0.5, rely=0.8, anchor='center', relwidth=1, relheight=0.1)
+output_box.pack(side=tk.BOTTOM, fill=tk.X, padx=10, pady=100)
 
 # Create the notebook pack
 notebook.pack(expand=True, fill="both")
